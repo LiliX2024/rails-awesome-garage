@@ -18,11 +18,11 @@ Rails.application.routes.draw do
   # end
 
   resources "cars", only: [ "index", "show" ] do
-    resources "reviews", only: [ "new", "create", "destroy" ]
-    resources "favourites", only: [ "new", "create", "destroy" ]
+    resources "reviews", only: [ "create" ]
+    resources "favourites", only: [ "create" ]
   end
 
-  resources "favourites", only: [ "index" ]
+  resources "favourites", only: [ "index", "destroy" ]
   # Defines the root path route ("/")
   # root "posts#index"
 end

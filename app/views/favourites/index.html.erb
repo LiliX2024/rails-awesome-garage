@@ -5,6 +5,9 @@
     <%= link_to favourite.car.brand, car_path(favourite.car) %>
     <%= favourite.car.brand %>
   </li>
+  <%= button_to "Delete", favourite_path(favourite), method: :delete, data: { confirm: "Are you sure?" } %>
   <% end %>
 </ul>
 <%= link_to "Back to All Cars", cars_path %>
+
+

@@ -9,18 +9,19 @@ class ReviewsController < ApplicationController
   #   @review = @car.reviews.find(params[:id])
   # end
 
-  def new
-    @car = Car.find(params[:car_id])
-    @review = @car.reviews.new
-  end
+  # def new
+  #   @car = Car.find(params[:car_id])
+  #   @review = @car.reviews.new
+  # end
 
   def create
     @car = Car.find(params[:car_id])
-    @review = @car.reviews.new(review_params)
+    @review = Review.new(review_params)
+    @review.car = @car
     if @review.save
       redirect_to car_path(@car), notice: "Review was successfully created."
     else
-      render :new
+      render "cars/show", status: :unprocessable_entity
     end
   end
 

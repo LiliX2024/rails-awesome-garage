@@ -20,12 +20,31 @@
   <% end %>
 </div>
 
+<%# <div>
+<% if @car.favourites.empty? %>
+  <%# <%= simple_form_for [@car, @favourite] do |f| %>
+    <%# <%= f.submit "Add to Favourite" %>
+  <%# <% end %>
+<%# <% else %>
+<%# <p>This car has already been added!</p> %>
+<%# <% end %>
+<%# </div> %>
+
+<%# <div>
+  <%= simple_form_for [@car, @favourite] do |f| %>
+    <%# <%= f.submit "Add to Favourite" %>
+  <%# <% end %>
+<%# </div> %>
+
 <div>
-  <%= simple_form_for [@car, Favourite.new] do |f| %>
-  <%= f.hidden_field :car_id, value: @car.id %>
-  <%= f.submit "Add to Favourite" %>
+  <% if @car.favourites.empty? %>
+    <%= simple_form_for [@car, @favourite] do |f| %>
+      <%= f.submit "Add to Favourite" %>
+    <% end %>
+  <% else %>
+    <p>This car has already been added!</p>
   <% end %>
 </div>
 
 <%= link_to "Back to All Cars", cars_path %>
-<%= link_to "View Favourites", favourites_path(@car) %>
+<%= link_to "View Favourites", favourites_path %>
