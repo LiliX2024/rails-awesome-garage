@@ -5,6 +5,6 @@ class Car < ApplicationRecord
 
   validates :brand, presence: true
   validates :model, presence: true
-  validates :year, presence: true
+  validates :year, presence: true, numericality: { only_integer: true, message: "must be an integer" }
   validates :fuel, presence: true
 end
