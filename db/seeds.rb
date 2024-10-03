@@ -7,3 +7,31 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+# Clear the database
+Car.destroy_all
+Owner.destroy_all
+Review.destroy_all
+Favourite.destroy_all
+puts "Cleared existing records."
+
+owner1 = Owner.find_or_create_by!(nickname: 'Alice')
+owner2 = Owner.find_or_create_by!(nickname: 'Bob')
+puts "Owner created"
+
+Car.create!([
+  {
+    brand: 'Toyota',
+    model: 'Camry',
+    year: 2021,
+    fuel: 'Gasoline',
+    owner: owner1
+  },
+  {
+    brand: 'Tesla',
+    model: 'Model 3',
+    year: 2022,
+    fuel: 'Electric',
+    owner: owner2
+  }
+])
