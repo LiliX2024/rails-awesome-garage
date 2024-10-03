@@ -1,0 +1,9 @@
+<h1>Car Show Page</h1>
+<ul>
+  <li><%= @car.brand %></li>
+  <li><%= @car.model %></li>
+  <li> <%= @car.year %></li>
+  <li><%= @car.fuel %></li>
+  <li>Owner: <%= @car.owner.nickname %></li>
+</ul>
+<%= link_to "Back to All Cars", cars_path %>

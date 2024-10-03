@@ -8,7 +8,19 @@ Rails.application.routes.draw do
   # Render dynamic PWA files from app/views/pwa/*
   get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
   get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
+  root to: "cars#index"
 
+  # resources "owners", only: [ "index", "show" ] do
+  #   resources "cars", only: [ "index", "show" ] do
+  #     resources "reviews", only: [ "show", "new", "create", "destroy" ]
+  #     resources "favourites", only: [ "show", "new", "create", "destroy" ]
+  #   end
+  # end
+
+
+  resources "cars", only: [ "index", "show" ] do
+    resources "reviews", only: [ "show", "new", "create", "destroy" ]
+  end
   # Defines the root path route ("/")
   # root "posts#index"
 end

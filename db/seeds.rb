@@ -17,7 +17,7 @@ puts "Cleared existing records."
 
 owner1 = Owner.find_or_create_by!(nickname: 'Alice')
 owner2 = Owner.find_or_create_by!(nickname: 'Bob')
-puts "Owner created"
+puts "Owners created"
 
 Car.create!([
   {
@@ -35,3 +35,4 @@ Car.create!([
     owner: owner2
   }
 ])
+puts "#{Car.count} cars created"
