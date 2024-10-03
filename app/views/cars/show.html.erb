@@ -5,5 +5,27 @@
   <li> <%= @car.year %></li>
   <li><%= @car.fuel %></li>
   <li>Owner: <%= @car.owner.nickname %></li>
+  <li>Reviews:</li>
+  <p><% @car.reviews.each do |review| %>
+  <hr>
+    <%= review.comment %>
+    <%= review.rating %></li>
+  <% end %></p>
 </ul>
+<div>
+  <%= simple_form_for [@car, @review] do |f| %>
+  <%= f.input :comment %>
+  <%= f.input :rating, collection: (1..5).to_a %>
+  <%= f.submit "Submit Review" %>
+  <% end %>
+</div>
+
+<div>
+  <%= simple_form_for [@car, Favourite.new] do |f| %>
+  <%= f.hidden_field :car_id, value: @car.id %>
+  <%= f.submit "Add to Favourite" %>
+  <% end %>
+</div>
+
 <%= link_to "Back to All Cars", cars_path %>
+<%= link_to "View Favourites", favourites_path(@car) %>

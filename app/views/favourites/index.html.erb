@@ -1,0 +1,10 @@
+<h1>Favourates Index page</h1>
+<ul>
+  <% @favourites.each do |favourite| %>
+  <li>
+    <%= link_to favourite.car.brand, car_path(favourite.car) %>
+    <%= favourite.car.brand %>
+  </li>
+  <% end %>
+</ul>
+<%= link_to "Back to All Cars", cars_path %>

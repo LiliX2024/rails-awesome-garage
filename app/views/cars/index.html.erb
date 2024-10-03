@@ -6,6 +6,7 @@
     <%= car.year %>
     <%= car.fuel %>
     Owner: <%= car.owner.nickname %>
+    <%= link_to "Add Review", new_car_review_path(car) %>
     <hr>
   </li>
 <% end %>
