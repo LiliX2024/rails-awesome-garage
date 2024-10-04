@@ -1,4 +1,6 @@
+<!--
 <h1>Car Show Page</h1>
+<%= image_tag @car.image_url %>
 <ul>
   <li><%= @car.brand %></li>
   <li><%= @car.model %></li>
@@ -20,22 +22,6 @@
   <% end %>
 </div>
 
-<%# <div>
-<% if @car.favourites.empty? %>
-  <%# <%= simple_form_for [@car, @favourite] do |f| %>
-    <%# <%= f.submit "Add to Favourite" %>
-  <%# <% end %>
-<%# <% else %>
-<%# <p>This car has already been added!</p> %>
-<%# <% end %>
-<%# </div> %>
-
-<%# <div>
-  <%= simple_form_for [@car, @favourite] do |f| %>
-    <%# <%= f.submit "Add to Favourite" %>
-  <%# <% end %>
-<%# </div> %>
-
 <div>
   <% if @car.favourites.empty? %>
     <%= simple_form_for [@car, @favourite] do |f| %>
@@ -48,3 +34,60 @@
 
 <%= link_to "Back to All Cars", cars_path %>
 <%= link_to "View Favourites", favourites_path %>
+-->
+
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-12 col-sm-8">
+      <div class="d-flex justify-content-between mb-3">
+        <%= link_to "Back to All Cars", cars_path, class: "btn btn-flat" %>
+        <%= link_to "View Favourites", favourites_path, class: "btn btn-flat" %>
+      </div>
+
+      <div class="card-car">
+        <%= image_tag @car.image_url, class: "show-img" %>
+
+        <div class="card-car-infos">
+          <div>
+            <h2><%= @car.brand %></h2>
+            <%= @car.model %>
+            <%= @car.year %>
+            <%= @car.fuel %>
+            <h2>Owner:</h2> <%= @car.owner.nickname %>
+          </div>
+          <h2 class="card-car-pricing">£99.99</h2>
+          <%= image_tag "https://kitt.lewagon.com/placeholder/users/sarahlafer", class: "card-car-owner avatar-bordered", alt: "avatar-bordered" %>
+        </div>
+
+        <div class="card-car-infos">
+          <% if @car.favourites.empty? %>
+            <%= simple_form_for [@car, @favourite] do |f| %>
+              <%= f.submit "Add to Favourite", class: "btn btn-primary" %>
+            <% end %>
+          <% else %>
+            <p>This car has already been added!</p>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="card-review">
+          <h2>Reviews:</h2>
+          <p><% @car.reviews.each do |review| %>
+          <hr>
+            <%= review.comment %>
+            <%= review.rating %></li>
+          <% end %></p>
+
+          <div class="card-review-form">
+            <%= simple_form_for [@car, @review] do |f| %>
+              <div class="col-6 mb-3">
+                <%= f.input :comment, placeholder: "Leave a comment" %>
+                <%= f.input :rating, collection: (1..5).to_a, label: "rating" %>
+                <%= f.submit "Submit Review", class: "btn btn-primary" %>
+              <% end %>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>

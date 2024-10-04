@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= content_for(:title) || "Rails Awesome Garage" %></title>
+    <title><%= content_for(:title) || "Awesome Garage" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <%= csrf_meta_tags %>
@@ -19,6 +19,11 @@
   </head>
 
   <body>
+
+    <% if !on_landing_page? %>
+      <%= render "shared/navbar" %>
+      <%= render "shared/banner" %>
+    <% end %>
 
     <% if notice %>
     <div class="alert alert-info alert-dismissible fade show m-1" role="alert">

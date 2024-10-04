@@ -15,6 +15,7 @@ class ReviewsController < ApplicationController
   # end
 
   def create
+    @favourite = Favourite.new
     @car = Car.find(params[:car_id])
     @review = Review.new(review_params)
     @review.car = @car
