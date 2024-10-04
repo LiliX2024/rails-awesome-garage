@@ -1,3 +1,4 @@
+<!--
 <h1>Favourates Index page</h1>
 <ul>
   <% @favourites.each do |favourite| %>
@@ -9,3 +10,47 @@
   <% end %>
 </ul>
 <%= link_to "Back to All Cars", cars_path %>
+-->
+<div class="row justify-content-center">
+    <div class="col-12">
+      <div class="container mt-3">
+
+        <h2>My Garage</h2>
+
+        <div class="cards">
+
+          <% @favourites.each do |favourite| %>
+
+              <div class="card-car" style="position: relative;">
+
+                  <%= link_to car_path(favourite.car) do %>
+                    <%= image_tag favourite.car.image_url %>
+                  <% end %>
+
+                  <%= button_to favourite_path(favourite), method: :delete, class: "btn btn-danger position-absolute", style: "top: 15px; right: 10px; background: transparent; border: none;", data: { confirm: "Are you sure?" } do %>
+                    <i class="fa fa-trash fa-1x" style="color: white;"></i>
+                  <% end %>
+
+                  <h5 class="card-title">
+                    <%= link_to favourite.car.brand, car_path(favourite.car), class: "text-decoration-none" %>
+                  </h5>
+
+                  <p class="card-text">
+                    Model: <%= favourite.car.model %><br>
+                    Year: <%= favourite.car.year %>
+                    Fuel: <%= favourite.car.fuel %>
+                    Owner: <%= favourite.car.owner.nickname %>
+                  </p>
+
+                  <%# <%= button_to "Delete", favourite_path(favourite), method: :delete, class: "btn btn-primary", data: { confirm: "Are you sure?" } %>
+              </div>
+          <% end %>
+
+        </div>
+
+        <div class="text-center mt-4">
+          <%= link_to "Back to All Cars", cars_path, class: "btn btn-primary" %>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -41,24 +41,38 @@
     <div class="col-12 col-sm-8">
       <div class="d-flex justify-content-between mb-3">
         <%= link_to "Back to All Cars", cars_path, class: "btn btn-flat" %>
-        <%= link_to "View Favourites", favourites_path, class: "btn btn-flat" %>
+        <%= link_to "My Garage", favourites_path, class: "btn btn-flat" %>
       </div>
 
-      <div class="card-car">
+      <div class="card-car" style="position: relative;">
         <%= image_tag @car.image_url, class: "show-img" %>
+
+        <div class="favourite-icon">
+            <% if @car.favourites.empty? %>
+              <%= simple_form_for [@car, @favourite], html: { method: :post } do |f| %>
+                <%= button_tag(type: :submit, class: "btn-icon", style: "background:none; border:none; padding:0;") do %>
+                  <i class="fa-regular fa-heart fa-2x" style="color: white;"></i>
+                <% end %>
+              <% end %>
+              <% else %>
+                <i class="fa-solid fa-heart fa-2x" style="color: white;"></i>
+            <% end %>
+        </div>
 
         <div class="card-car-infos">
           <div>
-            <h2><%= @car.brand %></h2>
-            <%= @car.model %>
-            <%= @car.year %>
-            <%= @car.fuel %>
-            <h2>Owner:</h2> <%= @car.owner.nickname %>
+            <p class="card-text">
+              Model: <%= @car.model %><br>
+              Year: <%= @car.year %>
+              Fuel: <%= @car.fuel %>
+              Owner: <%= @car.owner.nickname %>
+           </p>
           </div>
-          <h2 class="card-car-pricing">£99.99</h2>
+          <h2 class="card-car-pricing">£29999.99</h2>
           <%= image_tag "https://kitt.lewagon.com/placeholder/users/sarahlafer", class: "card-car-owner avatar-bordered", alt: "avatar-bordered" %>
         </div>
 
+      <!--
         <div class="card-car-infos">
           <% if @car.favourites.empty? %>
             <%= simple_form_for [@car, @favourite] do |f| %>
@@ -69,15 +83,9 @@
           <% end %>
         </div>
       </div>
+      -->
 
       <div class="card-review">
-          <h2>Reviews:</h2>
-          <p><% @car.reviews.each do |review| %>
-          <hr>
-            <%= review.comment %>
-            <%= review.rating %></li>
-          <% end %></p>
-
           <div class="card-review-form">
             <%= simple_form_for [@car, @review] do |f| %>
               <div class="col-6 mb-3">
@@ -87,7 +95,18 @@
               <% end %>
             </div>
           </div>
+        </div>
+
+        <div class="card-review">
+          <h2>Reviews:</h2>
+          <ul>
+          <% @car.reviews.each do |review| %>
+            <li><%= review.comment %>
+            <%= "⭐" * review.rating %></li>
+          <% end %>
+          </ul>
       </div>
+
     </div>
   </div>
 </div>
