@@ -40,3 +40,13 @@
   background: linear-gradient(#147EFF, #0F67DA);
   color: white;
 }
+
+.btn.btn-danger {
+  background-color: transparent;
+  border: none;
+  color: #ff0000; /* 修改为你喜欢的删除按钮颜色 */
+}
+
+.btn.btn-danger:hover {
+  color: #cc0000; /* 悬停时颜色变化 */
+}

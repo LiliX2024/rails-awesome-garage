@@ -1,0 +1,18 @@
+.fa-trash {
+  color: white;
+  background-color: #ff0000; /* 红色背景的垃圾桶图标 */
+  padding: 5px;
+  border-radius: 50%;
+}
+
+.fa-trash:hover {
+  color: white;
+  background-color: #cc0000; /* 悬停时的背景颜色 */
+}
+
+.favourite-icon{
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  height: 30px;
+}

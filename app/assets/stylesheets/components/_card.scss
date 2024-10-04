@@ -5,40 +5,6 @@
   grid-gap: 16px;
 }
 
-// Smallest device
-@media (min-width: 100px) and (max-width: 575px) {
-  .cards {
-    grid-template-columns: 1fr;
-  }
-}
-
-// Small devices (landscape phones, 576px and up)
-@media (min-width: 576px) {
-  .cards {
-    grid-template-columns: 1fr;
-  }
-}
-
-// Medium devices (tablets, 768px and up)
-@media (min-width: 768px) {
-  .cards {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-// Large devices (desktops, 992px and up)
-@media (min-width: 992px) {
-  .cards {
-    grid-template-columns: 1fr 1fr 1fr;
-  }
-}
-
-// Extra large devices (large desktops, 1200px and up)
-@media (min-width: 1200px) {
-  .cards {
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-  }
-}
 
 .card-car {
   position: relative;
@@ -111,37 +77,44 @@
 }
 
 
-.btn.btn-danger {
-  background-color: transparent;
-  border: none;
-  color: #ff0000; /* 修改为你喜欢的删除按钮颜色 */
-}
-
-.btn.btn-danger:hover {
-  color: #cc0000; /* 悬停时颜色变化 */
-}
-
 .position-absolute {
   position: absolute;
   top: 10px;
   right: 10px;
 }
 
-.fa-trash {
-  color: white;
-  background-color: #ff0000; /* 红色背景的垃圾桶图标 */
-  padding: 5px;
-  border-radius: 50%;
+
+// Smallest device
+@media (min-width: 100px) and (max-width: 575px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
 }
 
-.fa-trash:hover {
-  color: white;
-  background-color: #cc0000; /* 悬停时的背景颜色 */
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
 }
 
-.favourite-icon{
-  position: absolute;
-  top: 30px;
-  right: 30px;
-  height: 30px;
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  .cards {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  .cards {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+  .cards {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
 }
